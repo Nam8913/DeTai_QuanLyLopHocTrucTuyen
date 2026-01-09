@@ -1,0 +1,144 @@
+
+/* Base layout */
+:root {
+	color-scheme: #fff;
+}
+
+body {
+	margin: 0;
+}
+
+main {
+	padding: 16px;
+}
+
+header {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+header > h1 {
+	order: 1;
+	margin: 0;
+}
+
+header .auth-menu {
+	order: 2;
+	margin-left: auto;
+}
+
+.auth-menu {
+	position: relative;
+	display: inline-flex;
+}
+
+.auth-panel {
+	position: absolute;
+	right: 0;
+	top: calc(100% + 8px);
+	min-width: 280px;
+	max-width: 360px;
+	padding: 12px;
+	z-index: 1000;
+
+	border: 1px solid GrayText;
+	border-radius: 12px;
+	background: Canvas;
+	color: CanvasText;
+}
+
+.auth-actions {
+	display: flex;
+	gap: 8px;
+	margin: 0 0 12px;
+}
+
+.auth-action {
+	appearance: none;
+	border: 1px solid GrayText;
+	border-radius: 10px;
+	background: ButtonFace;
+	color: ButtonText;
+	padding: 8px 10px;
+	cursor: pointer;
+}
+
+.auth-action[aria-pressed="true"] {
+	background: Canvas;
+	font-weight: 600;
+}
+
+.auth-panel form {
+	display: grid;
+	gap: 10px;
+}
+
+.auth-panel form > div {
+	display: grid;
+	gap: 4px;
+}
+
+.icon-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 10px;
+	border: 1px solid GrayText;
+	background: ButtonFace;
+	color: ButtonText;
+	text-decoration: none;
+}
+
+.icon-button:hover,
+.icon-button:focus-visible {
+	text-decoration: none;
+	outline: 2px solid Highlight;
+	outline-offset: 2px;
+}
+
+.icon-button img {
+	width: 24px;
+	height: 24px;
+	display: block;
+}
+
+/* Tabs navigation */
+nav .tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	list-style: none;
+	padding: 0;
+	margin: 12px 0 16px;
+	border-bottom: 1px solid GrayText;
+}
+
+nav .tabs a {
+	display: inline-block;
+	padding: 8px 12px;
+	text-decoration: none;
+
+	border: 1px solid GrayText;
+	border-bottom: none;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+
+	background: ButtonFace;
+	color: ButtonText;
+}
+
+nav .tabs a:hover,
+nav .tabs a:focus-visible {
+	text-decoration: underline;
+}
+
+nav .tabs a[aria-current="page"] {
+	background: Canvas;
+	font-weight: 600;
+	position: relative;
+	top: 1px;
+}
+

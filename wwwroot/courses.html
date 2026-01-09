@@ -4,8 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý khóa học</title>
+    <link rel="stylesheet" href="css/base.css">
+    <script type="module" src="./frontend/auth-widget.js"></script>
 </head>
 <body>
-    
+    <main>
+        <header>
+            <div class="auth-menu">
+                <button id="auth-toggle" class="icon-button" type="button" aria-label="Tài khoản" aria-haspopup="dialog" aria-expanded="false" aria-controls="auth-panel">
+                    <img src="assets/icons/user.png" alt="" width="24" height="24">
+                </button>
+                <div id="auth-panel" class="auth-panel" role="dialog" aria-label="Tài khoản" hidden>
+                    <div class="auth-actions">
+                        <button class="auth-action" type="button" data-auth-view="login" aria-pressed="true">Đăng nhập</button>
+                        <button class="auth-action" type="button" data-auth-view="register" aria-pressed="false">Đăng ký</button>
+                    </div>
+                    <form data-auth-panel="login">
+                        <div>
+                            <label for="auth-login-email">Email</label>
+                            <input id="auth-login-email" name="email" type="email" autocomplete="email" required>
+                        </div>
+                        <div>
+                            <label for="auth-login-password">Mật khẩu</label>
+                            <input id="auth-login-password" name="password" type="password" autocomplete="current-password" required>
+                        </div>
+                        <button type="submit">Đăng nhập</button>
+                    </form>
+                    <form data-auth-panel="register" hidden>
+                        <div>
+                            <label for="auth-register-fullName">Họ tên</label>
+                            <input id="auth-register-fullName" name="fullName" type="text" autocomplete="name" required>
+                        </div>
+                        <div>
+                            <label for="auth-register-email">Email</label>
+                            <input id="auth-register-email" name="email" type="email" autocomplete="email" required>
+                        </div>
+                        <div>
+                            <label for="auth-register-password">Mật khẩu</label>
+                            <input id="auth-register-password" name="password" type="password" autocomplete="new-password" required>
+                        </div>
+                        <button type="submit">Đăng ký</button>
+                    </form>
+                </div>
+            </div>
+            <h1>MyClassroom</h1>
+        </header>
+        <nav>
+            <ul class="tabs">
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="courses.html" aria-current="page">Khóa học</a></li>
+            </ul>
+        </nav>
+    </main>
 </body>
 </html>
