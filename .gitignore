@@ -1,0 +1,26 @@
+# Build outputs
+**/bin/
+**/obj/
+
+# Visual Studio / VS Code
+.vs/
+.vscode/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+
+# OS cruft
+[Dd]esktop.ini
+Thumbs.db
+
+# NuGet
+**/packages/
+
+# Test results
+TestResults/
