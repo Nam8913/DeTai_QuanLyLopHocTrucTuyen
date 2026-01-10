@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý lớp học</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <script type="module" src="./frontend/main.js"></script>
+    <script type="module" src="./frontend/auth-widget.js"></script>
+</head>
+<body>
+    <main>
+        <header class="app-header">
+            <h1 class="app-title">MyClassroom</h1>
+            <div class="auth-menu">
+                <button id="auth-toggle" class="icon-button" type="button" aria-label="Tài khoản" aria-haspopup="dialog" aria-expanded="false" aria-controls="auth-panel">
+                    <img src="assets/icons/user.png" alt="" width="24" height="24">
+                </button>
+                <div id="auth-panel" class="auth-panel" role="dialog" aria-label="Tài khoản" hidden>
+                    <div class="auth-actions">
+                        <button class="auth-action" type="button" data-auth-view="login" aria-pressed="true">Đăng nhập</button>
+                        <button class="auth-action" type="button" data-auth-view="register" aria-pressed="false">Đăng ký</button>
+                    </div>
+                    <form data-auth-panel="login">
+                        <div>
+                            <label for="auth-login-email">Email</label>
+                            <input id="auth-login-email" name="email" type="email" autocomplete="email" required>
+                        </div>
+                        <div>
+                            <label for="auth-login-password">Mật khẩu</label>
+                            <input id="auth-login-password" name="password" type="password" autocomplete="current-password" required>
+                        </div>
+                        <div>
+                            <a href="frontend/reset-password.html">Quên mật khẩu?</a>
+                        </div>
+                        <button type="submit">Đăng nhập</button>
+                    </form>
+                    <form data-auth-panel="register" hidden>
+                        <div>
+                            <label for="auth-register-fullName">Họ tên</label>
+                            <input id="auth-register-fullName" name="fullName" type="text" autocomplete="name" required>
+                        </div>
+                        <div>
+                            <label for="auth-register-email">Email</label>
+                            <input id="auth-register-email" name="email" type="email" autocomplete="email" required>
+                        </div>
+                        <div>
+                            <label for="auth-register-password">Mật khẩu</label>
+                            <input id="auth-register-password" name="password" type="password" autocomplete="new-password" required>
+                        </div>
+                        <button type="submit">Đăng ký</button>
+                    </form>
+                </div>
+            </div>
+        </header>
+
+        <nav>
+            <ul class="tabs">
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="courses.html">Khóa học</a></li>
+            </ul>
+        </nav>
+
+        <section class="profile-layout" aria-label="Trang hồ sơ">
+            <aside class="profile-sidebar" aria-label="Menu tài khoản">
+                <div class="sidebar-user">
+                    <img class="sidebar-avatar" src="assets/icons/user.png" alt="Avatar" width="64" height="64">
+                    <div class="sidebar-user-meta">
+                        <div class="sidebar-user-label">Tài khoản của</div>
+                        <div class="sidebar-user-name" id="profileSidebarName">PROFILE_USERNAME</div>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav" aria-label="Danh mục">
+                    <a class="sidebar-item is-active" href="#thong-tin-tai-khoan">Thông tin tài khoản</a>
+                    <a class="sidebar-item" href="#thong-bao">Thông báo</a>
+                    <a class="sidebar-item" href="#doi-mat-khau">Đổi mật khẩu</a>
+                    <a class="sidebar-item" id="logout-link" href="index.html">Thoát</a>
+                </nav>
+            </aside>
+
+            <div class="profile-content">
+                <div class="profile-page-title">
+                    <h2>THÔNG TIN CHUNG</h2>
+                    <div class="profile-title-underline" aria-hidden="true"></div>
+                </div>
+
+                <div class="profile-grid">
+                    <section class="card" id="thong-tin-tai-khoan" aria-label="Thông tin tài khoản">
+                        <div class="card-header">
+                            <h3>Thông tin tài khoản</h3>
+                        </div>
+
+                        <dl class="info-list">
+                            <div class="info-row">
+                                <dt>Họ và tên</dt>
+                                <dd id="profileFullName"></dd>
+                            </div>
+                            <div class="info-row">
+                                <dt>Email</dt>
+                                <dd id="profileEmail"></dd>
+                            </div>
+                            <div class="info-row">
+                                <dt>Chức vụ</dt>
+                                <dd>
+                                    <span class="badge" id="profileRole">Học sinh</span>
+                                    <a class="link-button" href="profileUserEditorPage.html">Thay đổi</a>
+                                </dd>
+                            </div>
+                        </dl>
+                    </section>
+
+                    <section class="card" aria-label="Avatar">
+                        <div class="card-header">
+                            <h3>Avatar</h3>
+                        </div>
+
+                        <div class="avatar-box">
+                            <img class="avatar-preview" src="assets/icons/user.png" alt="Xem trước avatar" width="96" height="96">
+                            <div class="avatar-actions">
+                                <label class="btn" for="avatarFile">Chọn ảnh</label>
+                                <input id="avatarFile" class="visually-hidden" type="file" accept="image/png,image/jpeg,image/jpg,image/gif">
+                                <div class="avatar-hint">jpg,jpeg,gif,png &lt;2MB</div>
+                                <div class="avatar-warning">Avatar tục tĩu sẽ bị khóa vĩnh viễn</div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
