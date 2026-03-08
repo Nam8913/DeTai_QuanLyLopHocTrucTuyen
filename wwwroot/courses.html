@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý khóa học</title>
     <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/courses.css">
     <script type="module" src="./frontend/main.js"></script>
     <script type="module" src="./frontend/auth-widget.js"></script>
+    <script type="module" src="./frontend/utility/breadcrums.js"></script>
+    <script type="module" src="./frontend/join-class-widget.js"></script>
+    <script type="module" src="./frontend/create-class-widget.js"></script>
 </head>
 <body>
     <main>
@@ -16,36 +20,6 @@
                     <img src="assets/icons/user.png" alt="" width="24" height="24">
                 </button>
                 <div id="auth-panel" class="auth-panel" role="dialog" aria-label="Tài khoản" hidden>
-                    <div class="auth-actions">
-                        <button class="auth-action" type="button" data-auth-view="login" aria-pressed="true">Đăng nhập</button>
-                        <button class="auth-action" type="button" data-auth-view="register" aria-pressed="false">Đăng ký</button>
-                    </div>
-                    <form data-auth-panel="login">
-                        <div>
-                            <label for="auth-login-email">Email</label>
-                            <input id="auth-login-email" name="email" type="email" autocomplete="email" required>
-                        </div>
-                        <div>
-                            <label for="auth-login-password">Mật khẩu</label>
-                            <input id="auth-login-password" name="password" type="password" autocomplete="current-password" required>
-                        </div>
-                        <button type="submit">Đăng nhập</button>
-                    </form>
-                    <form data-auth-panel="register" hidden>
-                        <div>
-                            <label for="auth-register-fullName">Họ tên</label>
-                            <input id="auth-register-fullName" name="fullName" type="text" autocomplete="name" required>
-                        </div>
-                        <div>
-                            <label for="auth-register-email">Email</label>
-                            <input id="auth-register-email" name="email" type="email" autocomplete="email" required>
-                        </div>
-                        <div>
-                            <label for="auth-register-password">Mật khẩu</label>
-                            <input id="auth-register-password" name="password" type="password" autocomplete="new-password" required>
-                        </div>
-                        <button type="submit">Đăng ký</button>
-                    </form>
                 </div>
             </div>
             <h1>MyClassroom</h1>
@@ -56,6 +30,73 @@
                 <li><a href="courses.html" aria-current="page">Khóa học</a></li>
             </ul>
         </nav>
+        <div id="breadcrumb-container-element">
+            <nav>
+                <div id ="breadcrumb-items-container">
+                    <a href="index.html">Trang chủ</a>
+                </div>
+            </nav>
+        </div>
+
+        <section data-requires-role="student">
+            <h2>Lớp học của bạn</h2>
+            <p>Nội dung này chỉ hiển thị cho vai trò <strong>student</strong>.</p>
+            <ul>
+                <li>Xem danh sách lớp đã tham gia</li>
+                <li>Vào lớp, xem bài tập/tài liệu</li>
+            </ul>
+        </section>
+
+        <section data-requires-role="teacher">
+            <h2>Quản lý lớp bạn dạy</h2>
+            <p>Nội dung này chỉ hiển thị cho vai trò <strong>teacher</strong>.</p>
+            <ul>
+                <li>Tạo lớp mới</li>
+                <li>Quản lý học viên, bài giảng</li>
+            </ul>
+        </section>
+        
+        
+        <div class="card-frame">
+                <ul id="ul_List"></ul>
+        </div>
+        
+        <div>
+            <section data-requires-role="student">
+                <!-- Tham gia lớp học -->
+               <button id="join-class-toggle" class="icon-button" type="button" aria-label="Tham gia lớp" aria-haspopup="dialog" aria-expanded="false" aria-controls="join-class-panel">
+                    <img src="assets/icons/plus.png" alt="" width="24" height="24">
+                </button>
+                <div id="join-class-panel" role="dialog" aria-label="Tham gia lớp" hidden>
+                    <div>
+                        <div>
+                            <label for="join-class-code">Mã lớp</label>
+                            <input id="join-class-code" name="classCode" type="text" autocomplete="off" required>
+                        </div>
+                        <div class="join-class-action">
+                            <button class="join-class-toggle-action" type="button" aria-pressed="true">Vào lớp</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section data-requires-role="teacher">
+                <button id="create-class-toggle" class="icon-button" type="button" aria-label="Tạo lớp" aria-haspopup="dialog" aria-expanded="false">
+                    <img src="assets/icons/plus.png" alt="" width="24" height="24">
+                </button>
+                <div id="create-class-panel" role="dialog" aria-label="Tạo lớp" hidden>
+                    <div>
+                        <div>
+                            <label for="name-class-code">Tên lớp</label>
+                            <input id="name-class-code" name="className" type="text" autocomplete="off" required>
+                        </div>
+                        <div class="create-class-action">
+                            <button class="create-class-toggle-action" type="button" aria-pressed="true">Tạo lớp</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
 </body>
 </html>

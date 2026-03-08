@@ -141,4 +141,116 @@ nav .tabs a[aria-current="page"] {
 	position: relative;
 	top: 1px;
 }
+/* Toast notifications */
+.toast-host {
+	position: fixed;
+	top: 16px;
+	right: 16px;
+	z-index: 9999;
 
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	width: min(360px, calc(100vw - 32px));
+
+	/* host không chặn click toàn trang; toast vẫn click được */
+	pointer-events: none;
+}
+
+.toast {
+	--toast-accent: rgba(0, 0, 0, 0.75);
+
+	pointer-events: auto;
+	position: relative;
+	background: #ffffff;
+	border: 1px solid rgba(0, 0, 0, 0.12);
+	border-radius: 14px;
+	overflow: hidden;
+
+	opacity: 0;
+	transform: translateX(16px);
+	transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.toast--in {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.toast--out {
+	opacity: 0;
+	transform: translateX(16px);
+}
+
+.toast__content {
+	padding: 12px 40px 12px 14px;
+}
+
+.toast__close {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	width: 28px;
+	height: 28px;
+	border: 0;
+	background: transparent;
+	border-radius: 8px;
+	cursor: pointer;
+
+	color: rgba(0, 0, 0, 0.55);
+	font-size: 20px;
+	line-height: 28px;
+	text-align: center;
+	padding: 0;
+}
+
+.toast__close:hover {
+	background: rgba(0, 0, 0, 0.06);
+	color: rgba(0, 0, 0, 0.8);
+}
+
+.toast__name {
+	font-size: 12px;
+	letter-spacing: 0.02em;
+	color: rgba(0, 0, 0, 0.55);
+	margin: 0 0 6px;
+}
+
+.toast__title {
+	font-size: 26px;
+	font-weight: bold;
+	line-height: 1.2;
+	margin: 0 0 4px;
+	color: var(--toast-accent);
+}
+
+.toast__message {
+	font-size: 14px;
+	color: rgba(0, 0, 0, 0.7);
+	margin: 0;
+}
+
+.toast__progressTrack {
+	height: 4px;
+	background: rgba(0, 0, 0, 0.08);
+}
+
+.toast__progressBar {
+	height: 100%;
+	background: var(--toast-accent);
+	transform-origin: right;
+	transform: scaleX(1);
+	animation-name: toast-progress;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+}
+
+@keyframes toast-progress {
+	from {
+		transform: scaleX(1);
+	}
+	to {
+		transform: scaleX(0);
+	}
+}
+/* End Toast notifications */

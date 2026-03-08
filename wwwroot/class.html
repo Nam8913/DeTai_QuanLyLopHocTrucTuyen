@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/class-room.css">
+    <script type="module" src="./frontend/class-room.js"></script>
+    <title>Classroom Detail</title>
+</head>
+<body>
+    <main>
+        <section class="class-layout" aria-live="polite">
+            <header class="class-header">
+                <div>
+                    <p class="eyebrow">Phòng học</p>
+                    <h1 id="class-name">Đang tải lớp...</h1>
+                    <p id="class-code" class="subtle"></p>
+                </div>
+                <button id="copy-invite-code" class="action-button" type="button">Sao chép mã mời</button>
+            </header>
+
+            <div id="class-message" class="message" role="status" aria-live="polite"></div>
+
+            <section class="panel">
+                <h2>Thông tin thêm</h2>
+                <p id="class-extra-info" class="subtle">Chưa có thông tin thêm.</p>
+                <div id="owner-editor" hidden>
+                    <label for="class-extra-info-input">Mô tả lớp (chỉ chủ phòng có thể sửa)</label>
+                    <textarea id="class-extra-info-input" rows="4" placeholder="Nhập thông tin thêm của lớp..."></textarea>
+                    <div class="actions-row">
+                        <button id="save-class-info" class="action-button" type="button">Lưu thông tin</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2>Dữ liệu chủ phòng</h2>
+                <div id="owner-info" class="grid-two-cols"></div>
+            </section>
+
+            <section class="panel">
+                <h2>Danh sách học sinh</h2>
+                <ul id="students-list" class="clean-list"></ul>
+            </section>
+
+            <section class="panel">
+                <h2>Buổi học</h2>
+                <ul id="sessions-list" class="clean-list"></ul>
+            </section>
+        </section>
+    </main>
+</body>
+</html>

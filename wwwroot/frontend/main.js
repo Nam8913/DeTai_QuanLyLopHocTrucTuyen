@@ -1,4 +1,5 @@
 import { callHelloFuncFromBackend } from "./api/client.js";
+import { showToastError } from "./utility/toast.js";
 
 // main.js = “glue code” chạy trên hầu hết các trang.
 // Nhiệm vụ chính:
@@ -34,6 +35,49 @@ function isLoggedIn() {
 function getRole() {
 	const role = getAuthState()?.role;
 	return typeof role === "string" && role ? role : "student";
+}
+
+// Ẩn/hiện các phần tử UI theo auth/role dựa trên data-attributes.
+// Hỗ trợ:
+// - data-requires-auth="true"  => chỉ hiện khi đã đăng nhập
+// - data-requires-auth="false" => chỉ hiện khi chưa đăng nhập
+// - data-requires-role="teacher" hoặc "student" hoặc "teacher,student"
+function applyRoleVisibility() {
+	const elements = Array.from(
+		document.querySelectorAll("[data-requires-auth], [data-requires-role]")
+	);
+	if (elements.length === 0) return;
+
+	const authed = isLoggedIn();
+	const role = getRole();
+
+	for (const el of elements) {
+		let visible = true;
+
+		if (el.hasAttribute("data-requires-auth")) {
+			const requiresAuth = (el.getAttribute("data-requires-auth") || "").trim().toLowerCase();
+			if (requiresAuth === "true" && !authed) visible = false;
+			if (requiresAuth === "false" && authed) visible = false;
+		}
+
+		if (visible && el.hasAttribute("data-requires-role")) {
+			if (!authed) {
+				visible = false;
+			} else {
+				const raw = (el.getAttribute("data-requires-role") || "").trim().toLowerCase();
+				const allowedRoles = raw
+					.split(",")
+					.map((r) => r.trim())
+					.filter(Boolean);
+				if (allowedRoles.length > 0 && !allowedRoles.includes(role)) {
+					visible = false;
+				}
+			}
+		}
+
+		el.hidden = !visible;
+		el.style.display = visible ? "" : "none";
+	}
 }
 
 // Chặn truy cập các trang “private” (ví dụ courses.html) nếu chưa đăng nhập.
@@ -163,6 +207,7 @@ initLogoutLink();
 guardProfilePage();
 guardProtectedPages();
 renderTabs();
+applyRoleVisibility();
 
 // Auth widget sẽ bắn event này sau khi login/logout.
 // => UI (tabs/profile/guards) được cập nhật ngay, không cần refresh.
@@ -171,4 +216,5 @@ window.addEventListener("myclassroom:auth-changed", () => {
 	guardProfilePage();
 	guardProtectedPages();
 	renderTabs();
+	applyRoleVisibility();
 });

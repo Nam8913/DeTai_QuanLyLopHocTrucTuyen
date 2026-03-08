@@ -1,0 +1,110 @@
+.class-layout {
+	max-width: 980px;
+	margin: 0 auto;
+	display: grid;
+	gap: 14px;
+}
+
+.class-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: start;
+	gap: 12px;
+	padding: 14px;
+	border: 1px solid GrayText;
+	border-radius: 12px;
+}
+
+.eyebrow {
+	margin: 0;
+	font-size: 13px;
+	opacity: 0.75;
+}
+
+#class-name {
+	margin: 4px 0;
+}
+
+.subtle {
+	margin: 0;
+	opacity: 0.8;
+}
+
+.panel {
+	padding: 14px;
+	border: 1px solid GrayText;
+	border-radius: 12px;
+	display: grid;
+	gap: 10px;
+}
+
+.panel h2 {
+	margin: 0;
+	font-size: 20px;
+}
+
+.message {
+	min-height: 20px;
+	font-size: 14px;
+}
+
+label {
+	font-weight: 600;
+}
+
+textarea {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 8px;
+	font: inherit;
+}
+
+.action-button {
+	appearance: none;
+	border: 1px solid GrayText;
+	border-radius: 10px;
+	padding: 8px 12px;
+	background: ButtonFace;
+	color: ButtonText;
+	cursor: pointer;
+}
+
+.actions-row {
+	display: flex;
+	justify-content: end;
+}
+
+.grid-two-cols {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 10px;
+}
+
+.info-item {
+	padding: 10px;
+	border: 1px solid GrayText;
+	border-radius: 8px;
+}
+
+.clean-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	gap: 8px;
+}
+
+.clean-list > li {
+	padding: 10px;
+	border: 1px solid GrayText;
+	border-radius: 8px;
+}
+
+.session-title {
+	font-weight: 600;
+}
+
+.session-time {
+	opacity: 0.8;
+	margin-top: 4px;
+}

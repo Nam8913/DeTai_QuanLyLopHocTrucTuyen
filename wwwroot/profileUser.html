@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/profile.css">
     <script type="module" src="./frontend/main.js"></script>
     <script type="module" src="./frontend/auth-widget.js"></script>
+    <script type="module" src="./frontend/utility/breadcrums.js"></script>
 </head>
 <body>
     <main>
@@ -61,7 +62,12 @@
                 <li><a href="courses.html">Khóa học</a></li>
             </ul>
         </nav>
-
+        <div id="breadcrumb-container-element">
+            <nav>
+                <div id ="breadcrumb-items-container">
+                </div>
+            </nav>
+        </div>
         <section class="profile-layout" aria-label="Trang hồ sơ">
             <aside class="profile-sidebar" aria-label="Menu tài khoản">
                 <div class="sidebar-user">
@@ -75,7 +81,7 @@
                 <nav class="sidebar-nav" aria-label="Danh mục">
                     <a class="sidebar-item is-active" href="#thong-tin-tai-khoan">Thông tin tài khoản</a>
                     <a class="sidebar-item" href="#thong-bao">Thông báo</a>
-                    <a class="sidebar-item" href="#doi-mat-khau">Đổi mật khẩu</a>
+                    <a class="sidebar-item" href="reset-password.html">Đổi mật khẩu</a>
                     <a class="sidebar-item" id="logout-link" href="index.html">Thoát</a>
                 </nav>
             </aside>
